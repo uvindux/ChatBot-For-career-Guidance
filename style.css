@@ -76,32 +76,169 @@ body {
   position: relative;
   z-index: 1;
 }
-  #FAQ {
-    background-color: #e3f2fd;
-    color: #0d47a1;
-    border: 2px solid #0d47a1;
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-  }
+ /* FAQ Button Styles - Replace your existing .faq-button styles with this */
 
-  #FAQ:hover {
-    background-color: #0d47a1;
-    color: white;
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
+.faq-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  padding: 20px 35px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,249,250,0.8) 100%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
 
-  #FAQ:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
+#FAQ, .faq-button {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 50%, rgba(240, 147, 251, 0.1) 100%);
+  color: #667eea;
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  padding: 12px 20px;
+  margin: 0;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  min-width: auto;
+  max-width: 280px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 8px 25px rgba(102, 126, 234, 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
 
+#FAQ::before, .faq-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+#FAQ:hover, .faq-button:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  color: #ffffff;
+  border-color: rgba(102, 126, 234, 0.8);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 15px 35px rgba(102, 126, 234, 0.3),
+    0 5px 15px rgba(102, 126, 234, 0.2),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+#FAQ:hover::before, .faq-button:hover::before {
+  left: 100%;
+}
+
+#FAQ:active, .faq-button:active {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 
+    0 8px 20px rgba(102, 126, 234, 0.2),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Add some icons to make buttons more attractive */
+#FAQ:nth-child(1)::after {
+  content: " ⚛️";
+  opacity: 0.7;
+}
+
+#FAQ:nth-child(2)::after {
+  content: " 📚";
+  opacity: 0.7;
+}
+
+#FAQ:nth-child(3)::after {
+  content: " 💰";
+  opacity: 0.7;
+}
+
+/* Responsive design for FAQ buttons */
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 15px 25px;
+    gap: 10px;
+  }
+  
+  #FAQ, .faq-button {
+    font-size: 13px;
+    padding: 10px 16px;
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-container {
+    padding: 15px 20px;
+    gap: 8px;
+  }
+  
+  #FAQ, .faq-button {
+    font-size: 12px;
+    padding: 8px 14px;
+    max-width: 200px;
+    flex: 1;
+    min-width: 140px;
+  }
+}
+
+/* Animation for FAQ container */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-container {
+  animation: fadeInDown 0.6s ease-out 0.3s both;
+}
+
+/* Pulse animation for FAQ buttons when page loads */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 
+      0 8px 25px rgba(102, 126, 234, 0.15),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  50% {
+    box-shadow: 
+      0 8px 25px rgba(102, 126, 234, 0.25),
+      0 0 20px rgba(102, 126, 234, 0.2),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+}
+
+#FAQ:nth-child(1) {
+  animation: pulseGlow 2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+#FAQ:nth-child(2) {
+  animation: pulseGlow 2s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+#FAQ:nth-child(3) {
+  animation: pulseGlow 2s ease-in-out infinite;
+  animation-delay: 0.9s;
+}
 .header .tagline {
   font-size: 1rem;
   opacity: 0.85;
