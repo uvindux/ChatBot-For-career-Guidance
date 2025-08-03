@@ -1,0 +1,1 @@
+An interactive chatbot designed to provide career guidance, internship advice, and professional growth tips for undergraduate students. Powered by the Gemini AI API, this tool offers personalized responses through FAQ-style buttons and custom input, making it ideal for students exploring their next steps in the tech industry.
